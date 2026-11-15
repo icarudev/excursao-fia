@@ -2,9 +2,9 @@
 <?= $this->section('main') ?>
 <div class="row">
     <div class="col-sm-6">
-        <h2 class="m-2"> - Viagens </h2>
+        <h2 class="m-2"> Viagens </h2>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-end">
         <a class="btn btn-secondary" href="<?= base_url('viagens/novo') ?>"> Adicionar uma viagem </a>
     </div>
 </div>
