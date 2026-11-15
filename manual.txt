@@ -1,0 +1,27 @@
+=========== excursao-fia ================
+
+table: apartamentos
+    colunms: 
+        - modelo [enumerate] {
+            casal (1 cama de casal);
+            duplo (2 camas de solteiro);
+            triplo (3 camas de solteiro);
+            quadruplo (4 camas de solteiro);
+}
+# deixar espaco adicional para mais pessoas como por ex: crianca
+
+table: pessoas
+    colunms:
+        - nome;
+        - cpf;
+        - rg;
+        - data_nascimento;
+        - viagem_id ( chave estrangeira vinculada ao id de viagem, para buscar o nome );
+        - apartamento_id ( chave estrangeira vinculada ao id de apartamento, para buscar o tipo do apartamento);
+
+table: viagens
+    colunms:
+        - local (para aonde vai ser a viagem);
+        - hotel (nome do hotel);
+        - guias (nome dos guias);
+# pode ter mais de um guia (atencao);
