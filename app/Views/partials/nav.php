@@ -17,6 +17,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="<?= base_url('backup') ?>" class="nav-link active" onclick="alterarTexto(this)">
+                        <i class="fa-solid fa-coins me-1"></i> Backup
+                    </a>
+                </li>
+
                 <!-- <li class="nav-item">
                     <a class="nav-link active" href="<?= base_url('pessoas') ?>">
                         <i class="fa-solid fa-user me-1"></i> Pessoas
@@ -28,3 +34,17 @@
     </div>
 </nav>
 <br>
+
+<script>
+    function alterarTexto(elemento) {
+        const textoOriginal = elemento.innerText;
+        elemento.innerText = 'Gerando arquivo...';
+        elemento.classList.add('disabled');
+
+        // Restaura o botao apos 3 segundos
+        setTimeout(() => {
+            elemento.innerText = textoOriginal;
+            elemento.classList.remove('disabled');
+        }, 3000);
+    }
+</script>

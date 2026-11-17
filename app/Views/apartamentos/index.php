@@ -11,23 +11,37 @@
                 Adicionar um Apartamento</a>
         </div>
         <button></button>
-    </div>
+    </div>  
 </div> -->
 
 <div class="row align-items-center mb-3">
     <div class="col-sm-6">
         <h2 class="m-2">Apartamentos</h2>
     </div>
+
+
     <div class="col-sm-6 text-end noPrint">
-        <a class="btn btn-secondary me-2" href="<?= base_url('apartamentos/novo') ?>">
-            <i class="fa-solid fa-plus"></i> Adicionar um Apartamento
-        </a>
-        <button type="button" class="btn btn-success" onclick="window.print()">
-            <i class="fa-solid fa-file"></i> Gerar PDF
-        </button>
+        <div class="row text-end">
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-file"></i> Gerar PDF
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li> <a class="dropdown-item btn btn-primary" onclick="pdfOnibus()" href="#"> <i class="fa-solid fa-bus mr-2"></i> Onibus </a></li>
+                        <li> <a class="dropdown-item btn btn-primary" onclick="pdfHotel()" href="#"> <i class="fa-solid fa-hotel mr2"></i> Hotel </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<div class="col ">
+    <a class="btn btn-secondary me-2" href="<?= base_url('apartamentos/novo') ?>">
+        <i class="fa-solid fa-plus"></i> Adicionar um Apartamento
+    </a>
+</div>
 
 <div class="row mb-3">
     <div class="col-md-4 m-3">
@@ -44,8 +58,6 @@
         </form>
     </div>
 </div>
-
-
 
 <table class="table table-striped align-middle">
     <thead>
@@ -75,12 +87,11 @@
                                 <div class="accordion-body fw-normal">
 
                                     <div>
-                                        <strong>Modelo do apartamento:</strong>
-                                        <li class="fw-bold"> <?= strtoupper(esc($a['modelos'])) ?> </li>
+                                        <strong id="modelo">Modelo do apartamento:</strong>
+                                        <li class="fw-bold" id="modelo"> <?= strtoupper(esc($a['modelos'])) ?> </li>
                                     </div> <br>
 
                                     <strong>Pessoas no apartamento:</strong>
-
 
                                     <div class="row mt-2">
                                         <?php $temPessoa = false; ?>
@@ -90,10 +101,11 @@
 
                                                 <div class="col-md-3 col-6 mb-3 fw-bold">
                                                     <div class="border rounded p-2">
-                                                        (NOME: <?= esc($p['nome']) ?>)<br>
-                                                        (CPF: <?= esc($p['cpf']) ?>)<br>
-                                                        (RG: <?= esc($p['rg']) ?>)<br>
-                                                        (NASCIMENTO: <?= date('d/m/Y', strtotime(esc($p['data_nascimento']))) ?>)
+                                                        <span> (NOME: <?= esc($p['nome']) ?>) </span> <br>
+                                                        <span> (CPF: <?= esc($p['cpf']) ?>) </span> <br>
+                                                        <span> (RG: <?= esc($p['rg']) ?>) </span> <br>
+                                                        <span> (NASCIMENTO: <?= date('d/m/Y', strtotime(esc($p['data_nascimento']))) ?>) </span>
+                                                        <span id="poltrona"> (POLTRONA: <?= esc($p['poltrona']) ?>) </span>
                                                     </div>
                                                 </div>
 
@@ -127,7 +139,30 @@
             </tr>
         <?php endforeach; ?>
     </tbody>
-
 </table>
 
+<script>
+    function pdfOnibus() {
+
+        spanModelos = document.querySelectorAll('[id="modelo"]')
+
+        spanModelos.forEach(elemento => {
+            elemento.style.display = "none"
+        })
+
+        window.print()
+        location.reload()
+    }
+
+    function pdfHotel() {
+        poltrona = document.querySelectorAll('[id="poltrona"]')
+
+        poltrona.forEach(element => {
+            element.style.display = "none"
+        })
+
+        window.print()
+        location.reload()
+    }
+</script>
 <?= $this->endSection() ?>

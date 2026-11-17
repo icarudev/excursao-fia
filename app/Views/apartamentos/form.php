@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('main') ?>
 
-<div class="card col-md-6">
+<div class="card col">
     <div class="card-header text-light bg-dark">
         <h4><?= isset($apartamentos) ? 'Editar ' : 'Novo ' ?> Apartamento</h4>
     </div>
@@ -118,6 +118,20 @@
                 <label class="fw-bold">Nascimento (opcional): </label>
                 <input placeholder="(Opcional)" class="form-control mb-2" type="date" name="data_nascimento[]">
                 <input placeholder="(Opcional)" class="form-control mb-2 " type="date" name="data_nascimento[]">
+
+            </div>
+
+            <div class="col">
+                <!-- ========= POLTRONA ========= -->
+                <label class="fw-bold">Poltrona: </label>
+                <input class="form-control mb-2" type="number" name="poltrona[]" required>
+                <input class="form-control mb-2" type="number" name="poltrona[]" required>
+                <input style="display: none" class="form-control mb-2 tri" type="number" name="poltrona[]">
+                <input style="display: none" class="form-control mb-2 quad" type="number" name="poltrona[]">
+
+                <label class="fw-bold">Poltrona (opcional): </label>
+                <input placeholder="(Opcional)" class="form-control mb-2 " type="number" name="poltrona[]">
+                <input placeholder="(Opcional)" class="form-control mb-2 " type="number" name="poltrona[]">
 
             </div>
         </fieldset>

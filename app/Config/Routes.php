@@ -16,13 +16,13 @@ $routes->group('viagens', function ($routes) {
 });
 
 // --- Rotas Pessoas ---
-$routes->group('pessoas', function ($routes) {
-    $routes->get('/', 'PessoasController::index');
-    $routes->get('novo', 'PessoasController::novo');
-    $routes->post('salvar', 'PessoasController::salvar');
-    $routes->get('deletar/(:num)', 'PessoasController::deletar/$1');
-    $routes->get('editar/(:num)', 'PessoasController::editar');
-});
+// $routes->group('pessoas', function ($routes) {
+//     $routes->get('/', 'PessoasController::index');
+//     $routes->get('novo', 'PessoasController::novo');
+//     $routes->post('salvar', 'PessoasController::salvar');
+//     $routes->get('deletar/(:num)', 'PessoasController::deletar/$1');
+//     $routes->get('editar/(:num)', 'PessoasController::editar');
+// });
 
 // --- Rotas Apartamentos ---
 $routes->group('apartamentos', function ($routes) {
@@ -32,3 +32,6 @@ $routes->group('apartamentos', function ($routes) {
     $routes->get('deletar/(:num)', 'ApartamentosController::deletar/$1');
     $routes->get('editar/(:num)', 'ApartamentosController::editar');
 });
+
+// --- Rota Backup ---
+$routes->get('backup', 'BackupController::baixar');

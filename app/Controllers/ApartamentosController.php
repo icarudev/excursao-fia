@@ -94,6 +94,7 @@ class ApartamentosController extends BaseController
         $cpfs  = $this->request->getPost('cpf');
         $rgs   = $this->request->getPost('rg');
         $datas = $this->request->getPost('data_nascimento');
+        $poltronas = $this->request->getPost('poltrona');
 
         // 3. Percorre e salva cada pessoa que teve o nome preenchido
         if (!empty($nomes)) {
@@ -105,6 +106,7 @@ class ApartamentosController extends BaseController
                         'cpf'             => $cpfs[$index] ?? null,
                         'rg'              => $rgs[$index] ?? null,
                         'data_nascimento' => !empty($datas[$index]) ? $datas[$index] : null,
+                        'poltrona'        => $poltronas[$index] ?? null,
                     ];
 
                     $this->pesModel->insert($dadosPes);
